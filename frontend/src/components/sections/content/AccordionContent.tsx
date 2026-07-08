@@ -4,6 +4,8 @@ import {useState, useCallback} from 'react'
 import {PortableTextRenderer} from '../../shared/PortableTextRenderer'
 import type {AccordionData} from '@/types/sanity'
 
+type AccordionPanel = NonNullable<AccordionData['panels']>[number]
+
 export function AccordionContent({data}: {data: AccordionData}) {
   const panels = data.panels || []
   const [openKeys, setOpenKeys] = useState<ReadonlySet<string>>(new Set())
@@ -30,7 +32,7 @@ export function AccordionContent({data}: {data: AccordionData}) {
         </h3>
       )}
       <div className="divide-y divide-border rounded-lg border border-border">
-        {panels.map((panel) => {
+        {panels.map((panel: AccordionPanel) => {
           const isOpen = openKeys.has(panel._key)
           return (
             <div key={panel._key}>
