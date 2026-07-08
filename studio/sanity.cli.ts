@@ -12,8 +12,8 @@ const dataset = process.env.SANITY_STUDIO_DATASET;
 
 export default defineCliConfig({
   api: {
-    projectId,
-    dataset,
+    projectId: 'oog21pok',
+    dataset: 'production',
   },
   studioHost: process.env.SANITY_STUDIO_STUDIO_HOST || "",
   deployment: {
