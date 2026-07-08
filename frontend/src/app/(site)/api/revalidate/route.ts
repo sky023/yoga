@@ -6,6 +6,8 @@ const REVALIDATE_SECRET = process.env.SANITY_REVALIDATE_SECRET
 
 export async function POST(req: NextRequest) {
   try {
+    console.log('sanity-webhook-signature:', req.headers.get('sanity-webhook-signature'))
+    console.log('SANITY_REVALIDATE_SECRET set:', !!REVALIDATE_SECRET)
     if (!REVALIDATE_SECRET) {
       return NextResponse.json({message: 'Missing SANITY_REVALIDATE_SECRET'}, {status: 500})
     }
@@ -14,6 +16,7 @@ export async function POST(req: NextRequest) {
       _type: string
       slug?: {current?: string}
     }>(req, REVALIDATE_SECRET)
+    console.log('Secret exists:', !!REVALIDATE_SECRET, '| Valid signature:', isValidSignature)
 
     if (!isValidSignature) {
       return NextResponse.json({message: 'Invalid signature'}, {status: 401})
