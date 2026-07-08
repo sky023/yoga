@@ -23,7 +23,7 @@
     "build": "npm-run-all build:*",
     "build:frontend": "cd frontend && npm run build",
     "build:studio": "cd studio && npm run build",
-    "build:sanity": "cd studio && npx sanity build ../public/studio -y && cd .."
+    "build:sanity": "cd studio && npx sanity build ../public/studio -y && cd ..",
     "deploy:studio": "cd studio && sanity deploy",
     "validate": "sanity-template-validate",
     "seed": "cd frontend && npm run seed",
