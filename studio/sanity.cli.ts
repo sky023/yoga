@@ -11,13 +11,16 @@ const projectId = process.env.SANITY_STUDIO_PROJECT_ID;
 const dataset = process.env.SANITY_STUDIO_DATASET;
 
 export default defineCliConfig({
+  project : {
+    basepath: '/studio'
+  },
   api: {
     projectId: 'oog21pok',
     dataset: 'production',
   },
   studioHost: process.env.SANITY_STUDIO_STUDIO_HOST || "",
   deployment: {
-    appId: 'kq9mfz8mbjx0fu2h7zf836t4',
+    appId: 'b1htg2yoktluzts1cfqcl8tx',
     autoUpdates: true,
   },
   typegen: {

@@ -1,3 +1,4 @@
+
 import {defineConfig} from 'sanity'
 import {structureTool} from 'sanity/structure'
 import {presentationTool} from 'sanity/presentation'
@@ -18,7 +19,6 @@ const dataset = process.env.SANITY_STUDIO_DATASET!
 export default defineConfig({
   name: 'default',
   title: 'Page Builder Studio',
-
   projectId,
   dataset,
 
