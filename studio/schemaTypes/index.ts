@@ -1,0 +1,41 @@
+import type {SchemaTypeDefinition} from 'sanity'
+
+// Objects
+import {blockStylesType} from './objects/block-styles'
+import {blockContentType} from './objects/rich-text'
+import {linkInternalType, linkExternalType, pageSlugType} from './objects/link'
+import {youtubeVideoType, externalVideoType} from './objects/video'
+import {seoType} from './objects/seo'
+
+// Blocks (page builder)
+import {blockTypes} from './blocks'
+
+// Documents
+import {pageType} from './documents/page'
+import {homePageType} from './documents/home-page'
+import {siteSettingsType} from './documents/site-settings'
+import {blogPostType} from './documents/blog-post'
+
+const objectTypes: SchemaTypeDefinition[] = [
+  blockStylesType,
+  blockContentType,
+  linkInternalType,
+  linkExternalType,
+  pageSlugType,
+  youtubeVideoType,
+  externalVideoType,
+  seoType,
+]
+
+const documentTypes: SchemaTypeDefinition[] = [
+  pageType,
+  homePageType,
+  siteSettingsType,
+  blogPostType,
+]
+
+export const schemaTypes: SchemaTypeDefinition[] = [
+  ...documentTypes,
+  ...objectTypes,
+  ...blockTypes,
+]
