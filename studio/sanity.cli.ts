@@ -12,7 +12,7 @@ const dataset = process.env.SANITY_STUDIO_DATASET;
 
 export default defineCliConfig({
   project : {
-    basepath: '/studio'
+  
   },
   api: {
     projectId: 'oog21pok',
