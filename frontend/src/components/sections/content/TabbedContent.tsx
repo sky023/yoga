@@ -4,6 +4,8 @@ import {useState} from 'react'
 import {PortableTextRenderer} from '../../shared/PortableTextRenderer'
 import type {TabbedContentData} from '@/types/sanity'
 
+type Tab = NonNullable<TabbedContentData['tabs']>[number];
+
 export function TabbedContent({data}: {data: TabbedContentData}) {
   const tabs = data.tabs || []
   const [activeIndex, setActiveIndex] = useState(0)
@@ -15,7 +17,7 @@ export function TabbedContent({data}: {data: TabbedContentData}) {
   return (
     <div>
       <div className="flex border-b border-border" role="tablist">
-        {tabs.map((tab, index) => {
+        {tabs.map((tab: Tab, index: number) => {
           const isActive = index === activeIndex
           return (
             <button

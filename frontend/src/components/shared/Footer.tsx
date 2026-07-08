@@ -104,13 +104,13 @@ export function Footer({settings}: {settings: SiteSettings | null}) {
                 {socialLinks.map((link) => (
                   <a
                     key={link._key}
-                    href={link.url}
+                    href={link.url ?? '#'}
                     target="_blank"
                     rel="noopener noreferrer"
                     className={`flex h-9 w-9 items-center justify-center rounded-lg border ${borderClass} ${textMuted} transition-colors ${hoverClass}`}
-                    aria-label={link.platform}
+                    aria-label={link.platform ?? undefined}
                   >
-                    <SocialIcon platform={link.platform} />
+                    <SocialIcon platform={link.platform ?? ''} />
                   </a>
                 ))}
               </div>
@@ -126,7 +126,7 @@ export function Footer({settings}: {settings: SiteSettings | null}) {
                   {column.links.map((link) => (
                     <li key={link._key}>
                       <Link
-                        href={link.href}
+                        href={link.href ?? '#'}
                         className={`text-sm ${textMuted} transition-colors ${hoverClass}`}
                       >
                         {link.label}

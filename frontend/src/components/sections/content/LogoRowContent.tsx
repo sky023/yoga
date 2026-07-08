@@ -2,7 +2,7 @@ import {Image} from 'next-sanity/image'
 import {urlFor} from '@/sanity/lib/image'
 import type {LogoRowData} from '@/types/sanity'
 
-type Logo = LogoRowData['logos'][number]
+type Logo = NonNullable<LogoRowData['logos']>[number]
 
 const SIZE_MAP: Record<string, {width: number; height: number; className: string}> = {
   small: {width: 80, height: 40, className: 'h-8 w-auto'},

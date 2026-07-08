@@ -5,7 +5,7 @@ import {Image} from 'next-sanity/image'
 import {urlFor} from '@/sanity/lib/image'
 import type {TestimonialCarouselData} from '@/types/sanity'
 
-type Testimonial = TestimonialCarouselData['testimonials'][number]
+type Testimonial = NonNullable<TestimonialCarouselData['testimonials']>[number]
 
 const MS_PER_SECOND = 1000
 

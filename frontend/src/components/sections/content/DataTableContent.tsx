@@ -1,5 +1,8 @@
 import type {DataTableData} from '@/types/sanity'
 
+type TableHeader = NonNullable<DataTableData['headers']>[number]
+type TableRow = NonNullable<DataTableData['rows']>[number]
+
 export function DataTableContent({data}: {data: DataTableData}) {
   if (!data.headers || data.headers.length === 0) return null
 
@@ -17,7 +20,7 @@ export function DataTableContent({data}: {data: DataTableData}) {
 
           <thead>
             <tr className="border-b border-border bg-foreground/5">
-              {data.headers.map((header) => (
+              {data.headers.map((header: TableHeader) => (
                 <th
                   key={header._key}
                   scope="col"
@@ -30,7 +33,7 @@ export function DataTableContent({data}: {data: DataTableData}) {
           </thead>
 
           <tbody className="divide-y divide-border">
-            {data.rows?.map((row, rowIndex) => (
+            {data.rows?.map((row: TableRow, rowIndex: number) => (
               <tr
                 key={row._key}
                 className={
@@ -39,7 +42,7 @@ export function DataTableContent({data}: {data: DataTableData}) {
                     : 'bg-card'
                 }
               >
-                {data.headers.map((_, cellIndex) => {
+                {(data.headers ?? []).map((_: unknown, cellIndex: number) => {
                   const cell = row.cells?.[cellIndex]
                   return (
                     <td

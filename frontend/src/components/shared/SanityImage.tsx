@@ -3,10 +3,10 @@ import {urlFor} from '@/sanity/lib/image'
 
 interface SanityImageProps {
   value: {
-    asset?: {_id?: string; url?: string; metadata?: {lqip?: string | null; dimensions?: {width: number; height: number} | null} | null} | null
+    asset?: {_id?: string; url?: string | null; metadata?: {lqip?: string | null; dimensions?: {width: number | null; height: number | null} | null} | null} | null
     alt?: string | null
-    hotspot?: {x: number; y: number} | null
-    crop?: {top: number; bottom: number; left: number; right: number} | null
+    hotspot?: {x?: number; y?: number} | null
+    crop?: {top?: number; bottom?: number; left?: number; right?: number} | null
   }
   width?: number
   height?: number
@@ -21,8 +21,11 @@ export function SanityImage({value, width = 1200, height, className, priority, f
   if (!value?.asset) return null
 
   const dimensions = value.asset.metadata?.dimensions
-  const computedHeight = height || (dimensions ? Math.round(width * (dimensions.height / dimensions.width)) : Math.round(width / 1.5))
-
+  const computedHeight = height || (
+    dimensions?.height != null && dimensions?.width != null
+      ? Math.round(width * (dimensions.height / dimensions.width))
+      : Math.round(width / 1.5)
+  )
   const src = urlFor(value).width(width).height(computedHeight).fit('max').url()
 
   const defaultSizes = sizes || '(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px'

@@ -3,6 +3,8 @@ import {Image} from 'next-sanity/image'
 import {urlFor} from '@/sanity/lib/image'
 import type {FeatureCardGridData} from '@/types/sanity'
 
+type FeatureCard = NonNullable<FeatureCardGridData['cards']>[number];
+
 const COLS_MAP: Record<string, string> = {
   '2': 'sm:grid-cols-2',
   '3': 'sm:grid-cols-2 lg:grid-cols-3',
@@ -38,7 +40,7 @@ export function FeatureCardGridContent({data}: {data: FeatureCardGridData}) {
       )}
 
       <div className={`${data.title || data.subtitle ? 'mt-8' : ''} grid grid-cols-1 gap-6 ${colClass}`}>
-        {cards.map((card) => (
+        {cards.map((card: FeatureCard) => (
           <div
             key={card._key}
             className={`rounded-xl p-6 transition-colors ${cardClass}`}

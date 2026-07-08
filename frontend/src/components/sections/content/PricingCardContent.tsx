@@ -1,5 +1,7 @@
 import type {PricingCardData} from '@/types/sanity'
 
+type PricingFeature = NonNullable<PricingCardData['features']>[number];
+
 function resolveCtaHref(cta: NonNullable<PricingCardData['cta']>): string | null {
   const item = cta.link?.[0]
   if (!item) return null
@@ -59,7 +61,7 @@ export function PricingCardContent({data}: {data: PricingCardData}) {
 
       {features.length > 0 && (
         <ul className="mt-6 flex flex-col gap-3" role="list">
-          {features.map((feature) => (
+          {features.map((feature: PricingFeature) => (
             <li key={feature._key} className="flex items-center gap-3">
               {feature.included ? <CheckIcon /> : <XIcon />}
               <span

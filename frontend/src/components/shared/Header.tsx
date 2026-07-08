@@ -55,7 +55,7 @@ export function Header({settings}: {settings: SiteSettings | null}) {
               return (
                 <Link
                   key={link._key}
-                  href={link.href}
+                  href={link.href ?? '#'}
                   className="ml-2 rounded-full bg-foreground px-4 py-2 text-sm font-medium text-background transition-colors hover:bg-foreground/90"
                 >
                   {link.label}
@@ -65,7 +65,7 @@ export function Header({settings}: {settings: SiteSettings | null}) {
             return (
               <Link
                 key={link._key}
-                href={link.href}
+                href={link.href ?? '#'}
                 className="rounded-lg px-3 py-2 text-sm font-medium text-foreground/80 transition-colors hover:bg-foreground/5 hover:text-foreground"
               >
                 {link.label}
@@ -105,7 +105,7 @@ export function Header({settings}: {settings: SiteSettings | null}) {
               return (
                 <Link
                   key={link._key}
-                  href={link.href}
+                  href={link.href ?? '#'}
                   onClick={() => setMobileOpen(false)}
                   className={
                     link.isButton
@@ -163,7 +163,7 @@ function DesktopDropdown({item}: {item: NavDropdown}) {
           {(item.items || []).map((child) => (
             <Link
               key={child._key}
-              href={child.href}
+              href={child.href ?? '#'}
               onClick={() => setOpen(false)}
               className="flex items-start gap-3 rounded-lg px-3 py-2.5 transition-colors hover:bg-foreground/5"
             >
@@ -219,7 +219,7 @@ function MobileDropdown({item, onClose}: {item: NavDropdown; onClose: () => void
           {(item.items || []).map((child) => (
             <Link
               key={child._key}
-              href={child.href}
+              href={child.href ?? '#'}
               onClick={onClose}
               className="rounded-lg px-3 py-2 text-sm text-foreground/70 hover:bg-foreground/5 hover:text-foreground"
             >

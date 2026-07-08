@@ -5,6 +5,8 @@ import {BlockStylesWrapper} from '../shared/BlockStylesWrapper'
 import {CallToActionContent} from './content/CallToActionContent'
 import type {HeroSectionData} from '@/types/sanity'
 
+type HeroButton = NonNullable<HeroSectionData['buttons']>[number];
+
 const MAX_WIDTH_MAP: Record<string, string> = {
   narrow: 'max-w-3xl',
   default: 'max-w-7xl',
@@ -51,7 +53,7 @@ function HeroButtons({buttons}: {buttons: HeroSectionData['buttons']}) {
 
   return (
     <div className="mt-8 flex flex-wrap justify-center gap-4">
-      {buttons.map((btn) => (
+      {buttons.map((btn: HeroButton) => (
         <CallToActionContent key={btn._key} data={btn} />
       ))}
     </div>

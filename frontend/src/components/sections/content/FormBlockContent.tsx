@@ -3,8 +3,7 @@
 import {stegaClean} from 'next-sanity'
 import {useState, useCallback} from 'react'
 import type {FormBlockData} from '@/types/sanity'
-
-type FormField = FormBlockData['fields'][number]
+type FormField = NonNullable<FormBlockData['fields']>[number];
 type SubmitState = 'idle' | 'submitting' | 'success' | 'error'
 
 export function FormBlockContent({data}: {data: FormBlockData}) {
@@ -76,7 +75,7 @@ export function FormBlockContent({data}: {data: FormBlockData}) {
         className={`${data.formTitle || data.formDescription ? 'mt-6' : ''} space-y-4`}
       >
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-          {fields.map((field) => {
+          {fields.map((field: FormField) => {
             const isHalf = stegaClean(field.width) === 'half'
             const wrapClass = isHalf ? '' : 'sm:col-span-2'
 

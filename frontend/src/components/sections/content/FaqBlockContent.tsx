@@ -5,7 +5,7 @@ import {PortableTextRenderer} from '../../shared/PortableTextRenderer'
 import {toPlainText} from '@portabletext/toolkit'
 import type {FaqBlockData} from '@/types/sanity'
 
-type FaqItem = FaqBlockData['items'][number]
+type FaqItem = NonNullable<FaqBlockData['items']>[number];
 
 function buildJsonLd(items: FaqItem[]) {
   return {
@@ -13,7 +13,7 @@ function buildJsonLd(items: FaqItem[]) {
     '@type': 'FAQPage',
     mainEntity: items
       .filter((item) => item.question && item.answer)
-      .map((item) => ({
+      .map((item: FaqItem) => ({
         '@type': 'Question',
         name: item.question,
         acceptedAnswer: {
@@ -73,7 +73,7 @@ export function FaqBlockContent({data}: {data: FaqBlockData}) {
       )}
 
       <div className={`${data.title || data.subtitle ? 'mt-8' : ''} divide-y divide-border rounded-xl border border-border`}>
-        {items.map((item) => {
+        {items.map((item: FaqItem) => {
           const isOpen = openKeys.has(item._key)
           return (
             <div key={item._key}>

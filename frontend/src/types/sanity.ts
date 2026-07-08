@@ -11,7 +11,7 @@ export type SiteSettings = NonNullable<SITE_SETTINGS_QUERY_RESULT>
 export type NavItem = NonNullable<SiteSettings['mainNav']>[number]
 export type NavLink = Extract<NavItem, {_type: 'navLink'}>
 export type NavDropdown = Extract<NavItem, {_type: 'navDropdown'}>
-export type DropdownItem = NavDropdown['items'][number]
+export type DropdownItem = NonNullable<NavDropdown['items']>[number]
 export type FooterColumn = NonNullable<SiteSettings['footerColumns']>[number]
 export type FooterLink = NonNullable<FooterColumn['links']>[number]
 export type SocialLink = NonNullable<SiteSettings['socialLinks']>[number]
@@ -29,7 +29,7 @@ export type BlogPostListItem = BLOG_POSTS_QUERY_RESULT[number]
 export type PageBuilderBlock = NonNullable<PageData['pageBuilder']>[number]
 export type HeroSectionData = Extract<PageBuilderBlock, {_type: 'heroSection'}>
 export type GridRowData = Extract<PageBuilderBlock, {_type: 'gridRow'}>
-export type GridColumn = GridRowData['columns'][number]
+export type GridColumn = NonNullable<GridRowData['columns']>[number]
 export type ContentBlock = NonNullable<GridColumn['content']>[number]
 
 // ---------- Content block types ----------

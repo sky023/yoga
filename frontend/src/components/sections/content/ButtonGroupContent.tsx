@@ -1,6 +1,8 @@
 import {stegaClean} from 'next-sanity'
 import type {ButtonGroupData} from '@/types/sanity'
 
+type ButtonGroupButton = NonNullable<ButtonGroupData['buttons']>[number];
+
 interface LinkInternal {
   _type: 'linkInternal'
   reference?: {slug?: {current?: string}}
@@ -61,7 +63,7 @@ export function ButtonGroupContent({data}: {data: ButtonGroupData}) {
 
   return (
     <div className={`flex ${flexDirection} ${justifyClass} gap-3`}>
-      {buttons.map((button) => {
+      {buttons.map((button: ButtonGroupButton) => {
         if (!button.label) return null
 
         const {href, isExternal} = resolveHref((button.link || []) as unknown as LinkItem[])

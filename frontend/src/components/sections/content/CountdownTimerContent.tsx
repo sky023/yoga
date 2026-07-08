@@ -49,11 +49,10 @@ export function CountdownTimerContent({data}: {data: CountdownTimerData}) {
 
   useEffect(() => {
     if (!data.targetDate) return
-
+    const next = computeTimeRemaining(data.targetDate)
     setTime(computeTimeRemaining(data.targetDate))
 
     const interval = setInterval(() => {
-      const next = computeTimeRemaining(data.targetDate)
       setTime(next)
       if (next.isExpired) clearInterval(interval)
     }, 1000)

@@ -4,6 +4,8 @@ import {ScrollReveal} from '../shared/ScrollReveal'
 import {ContentRenderer} from './ContentRenderer'
 import type {GridRowData} from '@/types/sanity'
 
+type GridColumn = NonNullable<GridRowData['columns']>[number];
+type GridBlock = NonNullable<GridColumn['content']>[number];
 const GAP_MAP: Record<string, string> = {
   none: 'gap-0',
   sm: 'gap-2 md:gap-4',
@@ -60,7 +62,7 @@ export function GridRowSection({data}: {data: GridRowData}) {
       <section>
         <div className={`mx-auto px-4 sm:px-6 lg:px-8 ${maxWidthClass} ${paddingClass}`}>
           <div className={`grid ${gridClass} ${gapClass} ${reverseClass}`}>
-            {data.columns?.map((column, colIdx) => {
+            {data.columns?.map((column: GridColumn, colIdx) => {
               const valign = VALIGN_MAP[stegaClean(column.verticalAlign) || 'top'] || ''
               return (
                 <ScrollReveal key={column._key} delay={colIdx * STAGGER_MS}>
@@ -68,7 +70,7 @@ export function GridRowSection({data}: {data: GridRowData}) {
                     blockStyles={column.blockStyles}
                     className={valign}
                   >
-                    {column.content?.map((block) => (
+                    {column.content?.map((block: GridBlock) => (
                       <ContentRenderer key={block._key} block={block} />
                     ))}
                     {(!column.content || column.content.length === 0) && (

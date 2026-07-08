@@ -4,7 +4,7 @@ import {useState, useCallback} from 'react'
 import {PortableTextRenderer} from '../../shared/PortableTextRenderer'
 import type {AccordionData} from '@/types/sanity'
 
-type AccordionPanel = NonNullable<AccordionData['panels']>[number]
+type AccordionPanel = NonNullable<AccordionData['panels']>[number];
 
 export function AccordionContent({data}: {data: AccordionData}) {
   const panels = data.panels || []

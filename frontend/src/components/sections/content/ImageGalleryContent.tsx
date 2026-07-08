@@ -6,7 +6,7 @@ import {Image} from 'next-sanity/image'
 import {urlFor} from '@/sanity/lib/image'
 import type {ImageGalleryData} from '@/types/sanity'
 
-type GalleryImage = ImageGalleryData['images'][number]
+type GalleryImage = NonNullable<ImageGalleryData['images']>[number];
 
 const COLS_MAP: Record<string, string> = {
   '2': 'sm:columns-2',
@@ -52,7 +52,7 @@ export function ImageGalleryContent({data}: {data: ImageGalleryData}) {
 
       {isMasonry ? (
         <div className={`columns-1 gap-4 ${COLS_MAP[cleanColumns] || COLS_MAP['3']}`}>
-          {images.map((img, idx) => (
+          {images.map((img: GalleryImage, idx: number) => (
             <GalleryItem
               key={img._key}
               image={img}
@@ -64,7 +64,7 @@ export function ImageGalleryContent({data}: {data: ImageGalleryData}) {
         </div>
       ) : (
         <div className={`grid grid-cols-1 gap-4 ${GRID_COLS_MAP[cleanColumns] || GRID_COLS_MAP['3']}`}>
-          {images.map((img, idx) => (
+          {images.map((img: GalleryImage, idx: number) => (
             <GalleryItem
               key={img._key}
               image={img}

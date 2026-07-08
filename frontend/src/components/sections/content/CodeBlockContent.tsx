@@ -40,7 +40,7 @@ export function CodeBlockContent({data}: {data: CodeBlockData}) {
         <div className="overflow-x-auto bg-gray-900 p-4">
           <pre className="text-sm leading-relaxed">
             <code className="font-mono text-gray-100">
-              {lines.map((line, index) => (
+              {lines.map((line: string, index: number) => (
                 <span key={index} className="block">
                   {data.showLineNumbers && (
                     <span
