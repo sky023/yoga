@@ -1,7 +1,7 @@
 import {useCallback, useState} from 'react'
 import {type ObjectInputProps, set, unset} from 'sanity'
 import {Card, Flex, Text} from '@sanity/ui'
-import {SPACING_OPTIONS} from '../schemaTypes/shared/constants'
+import {SPACING_OPTIONS} from '../shared/constants'
 
 const BREAKPOINTS = [
   {key: '', label: 'Mobile', icon: '📱', width: '375px'},
