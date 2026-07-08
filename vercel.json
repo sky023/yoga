@@ -1,9 +1,0 @@
-{
-  "$schema": "https://openapi.vercel.sh/vercel.json",
-  "framework": "sanity-v3",
-  "buildCommand": "sanity build && sanity schema deploy --manifest-dir ./dist/static"
-
-#  "rewrites": [
-#    { "source": "/studio/(.*)", "destination": "/studio" }
-#  ]
-}
