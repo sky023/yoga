@@ -19,7 +19,7 @@ const dataset = process.env.SANITY_STUDIO_DATASET!
 export default defineConfig({
   name: 'default',
   title: 'Page Builder Studio',
-  basePath: "/studio",   
+   
   projectId,
   dataset,
 
