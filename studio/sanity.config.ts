@@ -10,6 +10,8 @@ import {schemaTypes} from './schemaTypes'
 import {structure} from './structure'
 import {singletonTypes, singletonActions} from './schemaTypes/shared/constants'
 
+import { vercelDeploy } from '@liiift-studio/deploy-vercel-from-sanity'
+
 const projectId = process.env.SANITY_STUDIO_PROJECT_ID!
 const dataset = process.env.SANITY_STUDIO_DATASET!
 
@@ -34,6 +36,7 @@ export default defineConfig({
     media(),
     colorInput(),
     table(),
+    vercelDeploy({ title: 'Deploy', name: 'vercel-deploy' }),
   ],
 
   schema: {
