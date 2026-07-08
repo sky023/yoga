@@ -468,8 +468,8 @@ export type PageBuilder = Array<
 
 export type GridRow = {
   _type: "gridRow";
-  layout: string;
-  columns: Array<{
+  layout?: string;
+  columns?: Array<{
     content?: Array<
       | ({
           _key: string;
@@ -574,8 +574,8 @@ export type TocBlock = {
 export type ImageGallery = {
   _type: "imageGallery";
   title?: string;
-  images: Array<{
-    image: GalleryImageImage;
+  images?: Array<{
+    image?: GalleryImageImage;
     alt?: string;
     caption?: string;
     _type: "galleryImage";
@@ -590,7 +590,7 @@ export type ImageGallery = {
 export type TestimonialCarousel = {
   _type: "testimonialCarousel";
   title?: string;
-  testimonials: Array<
+  testimonials?: Array<
     {
       _key: string;
     } & TestimonialQuote
@@ -606,9 +606,9 @@ export type FeatureCardGrid = {
   _type: "featureCardGrid";
   title?: string;
   subtitle?: string;
-  cards: Array<{
+  cards?: Array<{
     icon?: FeatureCardIcon;
-    title: string;
+    title?: string;
     description?: string;
     cta?: Cta;
     _type: "featureCard";
@@ -623,8 +623,8 @@ export type FaqBlock = {
   _type: "faqBlock";
   title?: string;
   subtitle?: string;
-  items: Array<{
-    question: string;
+  items?: Array<{
+    question?: string;
     answer?: BlockContent;
     _type: "faqItem";
     _key: string;
@@ -639,17 +639,11 @@ export type FormBlock = {
   _type: "formBlock";
   formTitle?: string;
   formDescription?: string;
-  fields: Array<{
-    label: string;
-    name: string;
-    type:
-      | "text"
-      | "email"
-      | "tel"
-      | "number"
-      | "textarea"
-      | "select"
-      | "checkbox";
+  fields?: Array<{
+    label?: string;
+    name?: string;
+    type?:
+      "text" | "email" | "tel" | "number" | "textarea" | "select" | "checkbox";
     placeholder?: string;
     required?: boolean;
     options?: Array<string>;
@@ -672,7 +666,7 @@ export type HeroSection = {
   layout?: "fullWidth" | "split";
   badge?: string;
   badgeLink?: string;
-  heading: string;
+  heading?: string;
   subtitle?: string;
   alignment?: "left" | "center" | "right";
   buttons?: Array<
@@ -694,10 +688,7 @@ export type HeroSection = {
   gradientFrom?: string;
   gradientTo?: string;
   gradientDirection?:
-    | "to bottom"
-    | "to bottom right"
-    | "to right"
-    | "to top right";
+    "to bottom" | "to bottom right" | "to right" | "to top right";
   backgroundImage?: {
     asset?: SanityImageAssetReference;
     media?: unknown;
@@ -722,7 +713,7 @@ export type SanityFileAssetReference = {
 
 export type LottieAnimation = {
   _type: "lottieAnimation";
-  source: "url" | "file";
+  source?: "url" | "file";
   url?: string;
   file?: {
     asset?: SanityFileAssetReference;
@@ -740,14 +731,14 @@ export type LottieAnimation = {
 export type DataTable = {
   _type: "dataTable";
   caption?: string;
-  headers: Array<{
-    text: string;
+  headers?: Array<{
+    text?: string;
     _type: "tableHeader";
     _key: string;
   }>;
-  rows: Array<{
-    cells: Array<{
-      text: string;
+  rows?: Array<{
+    cells?: Array<{
+      text?: string;
       _type: "tableCell";
       _key: string;
     }>;
@@ -771,7 +762,7 @@ export type CodeBlock = {
     | "bash"
     | "other";
   filename?: string;
-  code: string;
+  code?: string;
   showLineNumbers?: boolean;
   highlightLines?: string;
   caption?: string;
@@ -780,7 +771,7 @@ export type CodeBlock = {
 
 export type MapEmbed = {
   _type: "mapEmbed";
-  embedUrl: string;
+  embedUrl?: string;
   height?: "small" | "medium" | "large" | "xl";
   caption?: string;
   style?: "default" | "rounded" | "borderless";
@@ -789,8 +780,8 @@ export type MapEmbed = {
 
 export type LogoRow = {
   _type: "logoRow";
-  logos: Array<{
-    image: LogoItemImage;
+  logos?: Array<{
+    image?: LogoItemImage;
     alt?: string;
     link?: string;
     _type: "logoItem";
@@ -803,8 +794,8 @@ export type LogoRow = {
 
 export type SocialEmbed = {
   _type: "socialEmbed";
-  platform: "instagram" | "tiktok" | "twitter" | "facebook" | "other";
-  embedUrl: string;
+  platform?: "instagram" | "tiktok" | "twitter" | "facebook" | "other";
+  embedUrl?: string;
   caption?: string;
   aspectRatio?: "auto" | "square" | "portrait" | "landscape";
   blockStyles?: BlockStyles;
@@ -813,11 +804,11 @@ export type SocialEmbed = {
 export type PricingCard = {
   _type: "pricingCard";
   badge?: string;
-  title: string;
-  price: string;
+  title?: string;
+  price?: string;
   priceSubtext?: string;
   features?: Array<{
-    text: string;
+    text?: string;
     included?: boolean;
     _type: "pricingFeature";
     _key: string;
@@ -829,9 +820,9 @@ export type PricingCard = {
 
 export type AlertNotice = {
   _type: "alertNotice";
-  type: "info" | "success" | "warning" | "error" | "tip";
+  type?: "info" | "success" | "warning" | "error" | "tip";
   title?: string;
-  message: string;
+  message?: string;
   dismissible?: boolean;
   icon?: {
     asset?: SanityImageAssetReference;
@@ -845,7 +836,7 @@ export type AlertNotice = {
 
 export type TestimonialQuote = {
   _type: "testimonialQuote";
-  quote: string;
+  quote?: string;
   avatar?: {
     asset?: SanityImageAssetReference;
     media?: unknown;
@@ -853,7 +844,7 @@ export type TestimonialQuote = {
     crop?: SanityImageCrop;
     _type: "image";
   };
-  name: string;
+  name?: string;
   title?: string;
   rating?: number;
   style?: "simple" | "card" | "large";
@@ -862,8 +853,8 @@ export type TestimonialQuote = {
 
 export type StatMetric = {
   _type: "statMetric";
-  value: string;
-  label: string;
+  value?: string;
+  label?: string;
   prefix?: string;
   suffix?: string;
   size?: "small" | "medium" | "large";
@@ -872,7 +863,7 @@ export type StatMetric = {
 
 export type ButtonGroup = {
   _type: "buttonGroup";
-  buttons: Array<
+  buttons?: Array<
     {
       _key: string;
     } & CallToAction
@@ -893,7 +884,7 @@ export type IconText = {
     _type: "image";
   };
   iconSize?: "small" | "medium" | "large" | "xl";
-  title: string;
+  title?: string;
   description?: string;
   alignment?: string;
   link?: CallToAction;
@@ -904,7 +895,7 @@ export type CountdownTimer = {
   _type: "countdownTimer";
   title?: string;
   subtitle?: string;
-  targetDate: string;
+  targetDate?: string;
   timezone?:
     | "America/Los_Angeles"
     | "America/Denver"
@@ -924,7 +915,7 @@ export type CountdownTimer = {
 
 export type SpacerDivider = {
   _type: "spacerDivider";
-  height: "xs" | "sm" | "md" | "lg" | "xl" | "xxl";
+  height?: "xs" | "sm" | "md" | "lg" | "xl" | "xxl";
   showDivider?: boolean;
   dividerStyle?: "solid" | "dashed" | "dotted";
   dividerColor?: string;
@@ -936,10 +927,10 @@ export type Accordion = {
   _type: "accordion";
   title?: string;
   subtitle?: string;
-  panels: Array<{
-    title: string;
+  panels?: Array<{
+    title?: string;
     icon?: AccordionPanelIcon;
-    content: BlockContent;
+    content?: BlockContent;
     _type: "accordionPanel";
     _key: string;
   }>;
@@ -952,15 +943,15 @@ export type TabbedContent = {
   _type: "tabbedContent";
   title?: string;
   subtitle?: string;
-  tabs: Array<{
-    label: string;
+  tabs?: Array<{
+    label?: string;
     icon?: Icon;
-    content: Array<
+    content?: Array<
       | ({
           _key: string;
         } & BlockContent)
       | {
-          image: TabImageImage;
+          image?: TabImageImage;
           alt?: string;
           _type: "tabImage";
           _key: string;
@@ -1020,7 +1011,7 @@ export type TabbedContent = {
 
 export type ImageBlock = {
   _type: "imageBlock";
-  image: {
+  image?: {
     asset?: SanityImageAssetReference;
     media?: unknown;
     hotspot?: SanityImageHotspot;
@@ -1034,18 +1025,18 @@ export type ImageBlock = {
 
 export type RichTextBlock = {
   _type: "richTextBlock";
-  content: BlockContent;
+  content?: BlockContent;
   blockStyles?: BlockStyles;
 };
 
 export type CallToAction = {
   _type: "callToAction";
-  label: string;
+  label?: string;
   color?: string;
   textColor?: string;
   hoverColor?: string;
   variant?: "primary" | "secondary" | "outline" | "ghost";
-  link: Array<
+  link?: Array<
     | ({
         _key: string;
       } & LinkInternal)
@@ -1074,7 +1065,7 @@ export type Seo = {
 
 export type ExternalVideo = {
   _type: "externalVideo";
-  url: string;
+  url?: string;
   caption?: string;
   autoplay?: boolean;
   loop?: boolean;
@@ -1083,20 +1074,20 @@ export type ExternalVideo = {
 
 export type YoutubeVideo = {
   _type: "youtubeVideo";
-  url: string;
+  url?: string;
   caption?: string;
 };
 
 export type PageSlug = {
   _type: "pageSlug";
-  title: string;
-  slug: string;
+  title?: string;
+  slug?: string;
 };
 
 export type LinkExternal = {
   _type: "linkExternal";
-  title: string;
-  url: string;
+  title?: string;
+  url?: string;
   openInNewTab?: boolean;
 };
 
@@ -1110,7 +1101,7 @@ export type PageReference = {
 export type LinkInternal = {
   _type: "linkInternal";
   title?: string;
-  reference: PageReference;
+  reference?: PageReference;
 };
 
 export type BlockContent = Array<
@@ -1161,8 +1152,8 @@ export type BlogPost = {
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
-  title: string;
-  slug: Slug;
+  title?: string;
+  slug?: Slug;
   excerpt?: string;
   coverImage?: {
     asset?: SanityImageAssetReference;
@@ -1172,7 +1163,7 @@ export type BlogPost = {
     alt?: string;
     _type: "image";
   };
-  publishedAt: string;
+  publishedAt?: string;
   author?: string;
   body?: BlockContent;
   seo?: Seo;
@@ -1180,23 +1171,23 @@ export type BlogPost = {
 
 export type SanityImageCrop = {
   _type: "sanity.imageCrop";
-  top: number;
-  bottom: number;
-  left: number;
-  right: number;
+  top?: number;
+  bottom?: number;
+  left?: number;
+  right?: number;
 };
 
 export type SanityImageHotspot = {
   _type: "sanity.imageHotspot";
-  x: number;
-  y: number;
-  height: number;
-  width: number;
+  x?: number;
+  y?: number;
+  height?: number;
+  width?: number;
 };
 
 export type Slug = {
   _type: "slug";
-  current: string;
+  current?: string;
   source?: string;
 };
 
@@ -1206,7 +1197,7 @@ export type SiteSettings = {
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
-  siteName: string;
+  siteName?: string;
   tagline?: string;
   logo?: {
     asset?: SanityImageAssetReference;
@@ -1219,7 +1210,7 @@ export type SiteSettings = {
   primaryColor?: string;
   secondaryColor?: string;
   socialLinks?: Array<{
-    platform:
+    platform?:
       | "twitter"
       | "facebook"
       | "instagram"
@@ -1227,23 +1218,23 @@ export type SiteSettings = {
       | "youtube"
       | "tiktok"
       | "github";
-    url: string;
+    url?: string;
     _type: "socialLink";
     _key: string;
   }>;
   mainNav?: Array<
     | {
-        label: string;
-        href: string;
+        label?: string;
+        href?: string;
         isButton?: boolean;
         _type: "navLink";
         _key: string;
       }
     | {
-        label: string;
-        items: Array<{
-          label: string;
-          href: string;
+        label?: string;
+        items?: Array<{
+          label?: string;
+          href?: string;
           description?: string;
           icon?: {
             asset?: SanityImageAssetReference;
@@ -1262,10 +1253,10 @@ export type SiteSettings = {
   footerStyle?: "default" | "gradient" | "dark";
   footerDescription?: string;
   footerColumns?: Array<{
-    title: string;
+    title?: string;
     links?: Array<{
-      label: string;
-      href: string;
+      label?: string;
+      href?: string;
       _type: "footerLink";
       _key: string;
     }>;
@@ -1290,10 +1281,22 @@ export type Page = {
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
-  title: string;
-  slug: Slug;
+  title?: string;
+  slug?: Slug;
   pageBuilder?: PageBuilder;
   seo?: Seo;
+};
+
+export type Vercel_deploy = {
+  _id: string;
+  _type: "vercel_deploy";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  name?: string;
+  url?: string;
+  teamId?: string;
+  disableDeleteAction?: boolean;
 };
 
 export type Table = {
@@ -1373,9 +1376,9 @@ export type SanityImagePalette = {
 
 export type SanityImageDimensions = {
   _type: "sanity.imageDimensions";
-  height: number;
-  width: number;
-  aspectRatio: number;
+  height?: number;
+  width?: number;
+  aspectRatio?: number;
 };
 
 export type SanityImageMetadata = {
@@ -1401,14 +1404,14 @@ export type SanityFileAsset = {
   title?: string;
   description?: string;
   altText?: string;
-  sha1hash: string;
-  extension: string;
-  mimeType: string;
-  size: number;
-  assetId: string;
+  sha1hash?: string;
+  extension?: string;
+  mimeType?: string;
+  size?: number;
+  assetId?: string;
   uploadId?: string;
-  path: string;
-  url: string;
+  path?: string;
+  url?: string;
   source?: SanityAssetSourceData;
 };
 
@@ -1430,14 +1433,14 @@ export type SanityImageAsset = {
   title?: string;
   description?: string;
   altText?: string;
-  sha1hash: string;
-  extension: string;
-  mimeType: string;
-  size: number;
-  assetId: string;
+  sha1hash?: string;
+  extension?: string;
+  mimeType?: string;
+  size?: number;
+  assetId?: string;
   uploadId?: string;
-  path: string;
-  url: string;
+  path?: string;
+  url?: string;
   metadata?: SanityImageMetadata;
   source?: SanityAssetSourceData;
 };
@@ -1511,6 +1514,7 @@ export type AllSanitySchemaTypes =
   | SiteSettings
   | HomePage
   | Page
+  | Vercel_deploy
   | Table
   | TableRow
   | Color
@@ -1543,7 +1547,7 @@ export type HOME_PAGE_QUERY_RESULT =
         ogImage: {
           asset: {
             _id: string;
-            url: string;
+            url: string | null;
           } | null;
         } | null;
       } | null;
@@ -1557,7 +1561,7 @@ export type HOME_PAGE_QUERY_RESULT =
         ogImage: {
           asset: {
             _id: string;
-            url: string;
+            url: string | null;
           } | null;
         } | null;
       } | null;
@@ -1565,7 +1569,7 @@ export type HOME_PAGE_QUERY_RESULT =
         | {
             _key: string;
             _type: "gridRow";
-            layout: string;
+            layout?: string;
             columns: Array<{
               _key: string;
               content: Array<
@@ -1574,10 +1578,10 @@ export type HOME_PAGE_QUERY_RESULT =
                     _type: "accordion";
                     title?: string;
                     subtitle?: string;
-                    panels: Array<{
-                      title: string;
+                    panels?: Array<{
+                      title?: string;
                       icon?: AccordionPanelIcon;
-                      content: BlockContent;
+                      content?: BlockContent;
                       _type: "accordionPanel";
                       _key: string;
                     }>;
@@ -1593,12 +1597,12 @@ export type HOME_PAGE_QUERY_RESULT =
                         image: {
                           asset: {
                             _id: string;
-                            url: string;
+                            url: string | null;
                             metadata: {
                               lqip: string | null;
                               dimensions: {
-                                width: number;
-                                height: number;
+                                width: number | null;
+                                height: number | null;
                               } | null;
                             } | null;
                           } | null;
@@ -1616,9 +1620,9 @@ export type HOME_PAGE_QUERY_RESULT =
                 | {
                     _key: string;
                     _type: "alertNotice";
-                    type: "error" | "info" | "success" | "tip" | "warning";
+                    type?: "error" | "info" | "success" | "tip" | "warning";
                     title?: string;
-                    message: string;
+                    message?: string;
                     dismissible?: boolean;
                     icon?: {
                       asset?: SanityImageAssetReference;
@@ -1637,12 +1641,12 @@ export type HOME_PAGE_QUERY_RESULT =
                         image: {
                           asset: {
                             _id: string;
-                            url: string;
+                            url: string | null;
                             metadata: {
                               lqip: string | null;
                               dimensions: {
-                                width: number;
-                                height: number;
+                                width: number | null;
+                                height: number | null;
                               } | null;
                             } | null;
                           } | null;
@@ -1660,7 +1664,7 @@ export type HOME_PAGE_QUERY_RESULT =
                 | {
                     _key: string;
                     _type: "buttonGroup";
-                    buttons: Array<
+                    buttons?: Array<
                       {
                         _key: string;
                       } & CallToAction
@@ -1678,12 +1682,12 @@ export type HOME_PAGE_QUERY_RESULT =
                         image: {
                           asset: {
                             _id: string;
-                            url: string;
+                            url: string | null;
                             metadata: {
                               lqip: string | null;
                               dimensions: {
-                                width: number;
-                                height: number;
+                                width: number | null;
+                                height: number | null;
                               } | null;
                             } | null;
                           } | null;
@@ -1701,12 +1705,12 @@ export type HOME_PAGE_QUERY_RESULT =
                 | {
                     _key: string;
                     _type: "callToAction";
-                    label: string;
+                    label?: string;
                     color?: string;
                     textColor?: string;
                     hoverColor?: string;
                     variant?: "ghost" | "outline" | "primary" | "secondary";
-                    link: Array<
+                    link?: Array<
                       | ({
                           _key: string;
                         } & LinkExternal)
@@ -1732,7 +1736,7 @@ export type HOME_PAGE_QUERY_RESULT =
                       | "python"
                       | "typescript";
                     filename?: string;
-                    code: string;
+                    code?: string;
                     showLineNumbers?: boolean;
                     highlightLines?: string;
                     caption?: string;
@@ -1746,12 +1750,12 @@ export type HOME_PAGE_QUERY_RESULT =
                         image: {
                           asset: {
                             _id: string;
-                            url: string;
+                            url: string | null;
                             metadata: {
                               lqip: string | null;
                               dimensions: {
-                                width: number;
-                                height: number;
+                                width: number | null;
+                                height: number | null;
                               } | null;
                             } | null;
                           } | null;
@@ -1771,7 +1775,7 @@ export type HOME_PAGE_QUERY_RESULT =
                     _type: "countdownTimer";
                     title?: string;
                     subtitle?: string;
-                    targetDate: string;
+                    targetDate?: string;
                     timezone?:
                       | "America/Chicago"
                       | "America/Denver"
@@ -1796,12 +1800,12 @@ export type HOME_PAGE_QUERY_RESULT =
                         image: {
                           asset: {
                             _id: string;
-                            url: string;
+                            url: string | null;
                             metadata: {
                               lqip: string | null;
                               dimensions: {
-                                width: number;
-                                height: number;
+                                width: number | null;
+                                height: number | null;
                               } | null;
                             } | null;
                           } | null;
@@ -1820,14 +1824,14 @@ export type HOME_PAGE_QUERY_RESULT =
                     _key: string;
                     _type: "dataTable";
                     caption?: string;
-                    headers: Array<{
-                      text: string;
+                    headers?: Array<{
+                      text?: string;
                       _type: "tableHeader";
                       _key: string;
                     }>;
-                    rows: Array<{
-                      cells: Array<{
-                        text: string;
+                    rows?: Array<{
+                      cells?: Array<{
+                        text?: string;
                         _type: "tableCell";
                         _key: string;
                       }>;
@@ -1846,12 +1850,12 @@ export type HOME_PAGE_QUERY_RESULT =
                         image: {
                           asset: {
                             _id: string;
-                            url: string;
+                            url: string | null;
                             metadata: {
                               lqip: string | null;
                               dimensions: {
-                                width: number;
-                                height: number;
+                                width: number | null;
+                                height: number | null;
                               } | null;
                             } | null;
                           } | null;
@@ -1869,7 +1873,7 @@ export type HOME_PAGE_QUERY_RESULT =
                 | {
                     _key: string;
                     _type: "externalVideo";
-                    url: string;
+                    url?: string;
                     caption?: string;
                     autoplay?: boolean;
                     loop?: boolean;
@@ -1881,8 +1885,8 @@ export type HOME_PAGE_QUERY_RESULT =
                     _type: "faqBlock";
                     title?: string;
                     subtitle?: string;
-                    items: Array<{
-                      question: string;
+                    items?: Array<{
+                      question?: string;
                       answer?: BlockContent;
                       _type: "faqItem";
                       _key: string;
@@ -1900,12 +1904,12 @@ export type HOME_PAGE_QUERY_RESULT =
                         image: {
                           asset: {
                             _id: string;
-                            url: string;
+                            url: string | null;
                             metadata: {
                               lqip: string | null;
                               dimensions: {
-                                width: number;
-                                height: number;
+                                width: number | null;
+                                height: number | null;
                               } | null;
                             } | null;
                           } | null;
@@ -1925,9 +1929,9 @@ export type HOME_PAGE_QUERY_RESULT =
                     _type: "featureCardGrid";
                     title?: string;
                     subtitle?: string;
-                    cards: Array<{
+                    cards?: Array<{
                       icon?: FeatureCardIcon;
-                      title: string;
+                      title?: string;
                       description?: string;
                       cta?: Cta;
                       _type: "featureCard";
@@ -1945,12 +1949,12 @@ export type HOME_PAGE_QUERY_RESULT =
                         image: {
                           asset: {
                             _id: string;
-                            url: string;
+                            url: string | null;
                             metadata: {
                               lqip: string | null;
                               dimensions: {
-                                width: number;
-                                height: number;
+                                width: number | null;
+                                height: number | null;
                               } | null;
                             } | null;
                           } | null;
@@ -1970,10 +1974,10 @@ export type HOME_PAGE_QUERY_RESULT =
                     _type: "formBlock";
                     formTitle?: string;
                     formDescription?: string;
-                    fields: Array<{
-                      label: string;
-                      name: string;
-                      type:
+                    fields?: Array<{
+                      label?: string;
+                      name?: string;
+                      type?:
                         | "checkbox"
                         | "email"
                         | "number"
@@ -2005,12 +2009,12 @@ export type HOME_PAGE_QUERY_RESULT =
                         image: {
                           asset: {
                             _id: string;
-                            url: string;
+                            url: string | null;
                             metadata: {
                               lqip: string | null;
                               dimensions: {
-                                width: number;
-                                height: number;
+                                width: number | null;
+                                height: number | null;
                               } | null;
                             } | null;
                           } | null;
@@ -2031,12 +2035,12 @@ export type HOME_PAGE_QUERY_RESULT =
                     icon: {
                       asset: {
                         _id: string;
-                        url: string;
+                        url: string | null;
                         metadata: {
                           lqip: string | null;
                           dimensions: {
-                            width: number;
-                            height: number;
+                            width: number | null;
+                            height: number | null;
                           } | null;
                         } | null;
                       } | null;
@@ -2045,7 +2049,7 @@ export type HOME_PAGE_QUERY_RESULT =
                       crop: SanityImageCrop | null;
                     } | null;
                     iconSize?: "large" | "medium" | "small" | "xl";
-                    title: string;
+                    title?: string;
                     description?: string;
                     alignment?: string;
                     link?: CallToAction;
@@ -2059,12 +2063,12 @@ export type HOME_PAGE_QUERY_RESULT =
                         image: {
                           asset: {
                             _id: string;
-                            url: string;
+                            url: string | null;
                             metadata: {
                               lqip: string | null;
                               dimensions: {
-                                width: number;
-                                height: number;
+                                width: number | null;
+                                height: number | null;
                               } | null;
                             } | null;
                           } | null;
@@ -2085,19 +2089,19 @@ export type HOME_PAGE_QUERY_RESULT =
                     image: {
                       asset: {
                         _id: string;
-                        url: string;
+                        url: string | null;
                         metadata: {
                           lqip: string | null;
                           dimensions: {
-                            width: number;
-                            height: number;
+                            width: number | null;
+                            height: number | null;
                           } | null;
                         } | null;
                       } | null;
                       alt: string | null;
                       hotspot: SanityImageHotspot | null;
                       crop: SanityImageCrop | null;
-                    };
+                    } | null;
                     caption: string | null;
                     blockStyles: {
                       padding: Padding | null;
@@ -2109,12 +2113,12 @@ export type HOME_PAGE_QUERY_RESULT =
                         image: {
                           asset: {
                             _id: string;
-                            url: string;
+                            url: string | null;
                             metadata: {
                               lqip: string | null;
                               dimensions: {
-                                width: number;
-                                height: number;
+                                width: number | null;
+                                height: number | null;
                               } | null;
                             } | null;
                           } | null;
@@ -2133,8 +2137,8 @@ export type HOME_PAGE_QUERY_RESULT =
                     _key: string;
                     _type: "imageGallery";
                     title?: string;
-                    images: Array<{
-                      image: GalleryImageImage;
+                    images?: Array<{
+                      image?: GalleryImageImage;
                       alt?: string;
                       caption?: string;
                       _type: "galleryImage";
@@ -2153,12 +2157,12 @@ export type HOME_PAGE_QUERY_RESULT =
                         image: {
                           asset: {
                             _id: string;
-                            url: string;
+                            url: string | null;
                             metadata: {
                               lqip: string | null;
                               dimensions: {
-                                width: number;
-                                height: number;
+                                width: number | null;
+                                height: number | null;
                               } | null;
                             } | null;
                           } | null;
@@ -2180,22 +2184,22 @@ export type HOME_PAGE_QUERY_RESULT =
                       image: {
                         asset: {
                           _id: string;
-                          url: string;
+                          url: string | null;
                           metadata: {
                             lqip: string | null;
                             dimensions: {
-                              width: number;
-                              height: number;
+                              width: number | null;
+                              height: number | null;
                             } | null;
                           } | null;
                         } | null;
                         alt: null;
                         hotspot: SanityImageHotspot | null;
                         crop: SanityImageCrop | null;
-                      };
+                      } | null;
                       alt: string | null;
                       link: string | null;
-                    }>;
+                    }> | null;
                     grayscale: boolean | null;
                     size: "large" | "medium" | "small" | null;
                     blockStyles: {
@@ -2208,12 +2212,12 @@ export type HOME_PAGE_QUERY_RESULT =
                         image: {
                           asset: {
                             _id: string;
-                            url: string;
+                            url: string | null;
                             metadata: {
                               lqip: string | null;
                               dimensions: {
-                                width: number;
-                                height: number;
+                                width: number | null;
+                                height: number | null;
                               } | null;
                             } | null;
                           } | null;
@@ -2231,7 +2235,7 @@ export type HOME_PAGE_QUERY_RESULT =
                 | {
                     _key: string;
                     _type: "lottieAnimation";
-                    source: "file" | "url";
+                    source?: "file" | "url";
                     url?: string;
                     file?: {
                       asset?: SanityFileAssetReference;
@@ -2253,12 +2257,12 @@ export type HOME_PAGE_QUERY_RESULT =
                         image: {
                           asset: {
                             _id: string;
-                            url: string;
+                            url: string | null;
                             metadata: {
                               lqip: string | null;
                               dimensions: {
-                                width: number;
-                                height: number;
+                                width: number | null;
+                                height: number | null;
                               } | null;
                             } | null;
                           } | null;
@@ -2276,7 +2280,7 @@ export type HOME_PAGE_QUERY_RESULT =
                 | {
                     _key: string;
                     _type: "mapEmbed";
-                    embedUrl: string;
+                    embedUrl?: string;
                     height?: "large" | "medium" | "small" | "xl";
                     caption?: string;
                     style?: "borderless" | "default" | "rounded";
@@ -2290,12 +2294,12 @@ export type HOME_PAGE_QUERY_RESULT =
                         image: {
                           asset: {
                             _id: string;
-                            url: string;
+                            url: string | null;
                             metadata: {
                               lqip: string | null;
                               dimensions: {
-                                width: number;
-                                height: number;
+                                width: number | null;
+                                height: number | null;
                               } | null;
                             } | null;
                           } | null;
@@ -2314,11 +2318,11 @@ export type HOME_PAGE_QUERY_RESULT =
                     _key: string;
                     _type: "pricingCard";
                     badge?: string;
-                    title: string;
-                    price: string;
+                    title?: string;
+                    price?: string;
                     priceSubtext?: string;
                     features?: Array<{
-                      text: string;
+                      text?: string;
                       included?: boolean;
                       _type: "pricingFeature";
                       _key: string;
@@ -2335,12 +2339,12 @@ export type HOME_PAGE_QUERY_RESULT =
                         image: {
                           asset: {
                             _id: string;
-                            url: string;
+                            url: string | null;
                             metadata: {
                               lqip: string | null;
                               dimensions: {
-                                width: number;
-                                height: number;
+                                width: number | null;
+                                height: number | null;
                               } | null;
                             } | null;
                           } | null;
@@ -2387,7 +2391,7 @@ export type HOME_PAGE_QUERY_RESULT =
                           _type: "image";
                           _key: string;
                         }
-                    >;
+                    > | null;
                     blockStyles: {
                       padding: Padding | null;
                       margin: Margin | null;
@@ -2398,12 +2402,12 @@ export type HOME_PAGE_QUERY_RESULT =
                         image: {
                           asset: {
                             _id: string;
-                            url: string;
+                            url: string | null;
                             metadata: {
                               lqip: string | null;
                               dimensions: {
-                                width: number;
-                                height: number;
+                                width: number | null;
+                                height: number | null;
                               } | null;
                             } | null;
                           } | null;
@@ -2421,13 +2425,9 @@ export type HOME_PAGE_QUERY_RESULT =
                 | {
                     _key: string;
                     _type: "socialEmbed";
-                    platform:
-                      | "facebook"
-                      | "instagram"
-                      | "other"
-                      | "tiktok"
-                      | "twitter";
-                    embedUrl: string;
+                    platform?:
+                      "facebook" | "instagram" | "other" | "tiktok" | "twitter";
+                    embedUrl?: string;
                     caption?: string;
                     aspectRatio?: "auto" | "landscape" | "portrait" | "square";
                     blockStyles: {
@@ -2440,12 +2440,12 @@ export type HOME_PAGE_QUERY_RESULT =
                         image: {
                           asset: {
                             _id: string;
-                            url: string;
+                            url: string | null;
                             metadata: {
                               lqip: string | null;
                               dimensions: {
-                                width: number;
-                                height: number;
+                                width: number | null;
+                                height: number | null;
                               } | null;
                             } | null;
                           } | null;
@@ -2463,7 +2463,7 @@ export type HOME_PAGE_QUERY_RESULT =
                 | {
                     _key: string;
                     _type: "spacerDivider";
-                    height: "lg" | "md" | "sm" | "xl" | "xs" | "xxl";
+                    height?: "lg" | "md" | "sm" | "xl" | "xs" | "xxl";
                     showDivider?: boolean;
                     dividerStyle?: "dashed" | "dotted" | "solid";
                     dividerColor?: string;
@@ -2478,12 +2478,12 @@ export type HOME_PAGE_QUERY_RESULT =
                         image: {
                           asset: {
                             _id: string;
-                            url: string;
+                            url: string | null;
                             metadata: {
                               lqip: string | null;
                               dimensions: {
-                                width: number;
-                                height: number;
+                                width: number | null;
+                                height: number | null;
                               } | null;
                             } | null;
                           } | null;
@@ -2501,8 +2501,8 @@ export type HOME_PAGE_QUERY_RESULT =
                 | {
                     _key: string;
                     _type: "statMetric";
-                    value: string;
-                    label: string;
+                    value?: string;
+                    label?: string;
                     prefix?: string;
                     suffix?: string;
                     size?: "large" | "medium" | "small";
@@ -2516,12 +2516,12 @@ export type HOME_PAGE_QUERY_RESULT =
                         image: {
                           asset: {
                             _id: string;
-                            url: string;
+                            url: string | null;
                             metadata: {
                               lqip: string | null;
                               dimensions: {
-                                width: number;
-                                height: number;
+                                width: number | null;
+                                height: number | null;
                               } | null;
                             } | null;
                           } | null;
@@ -2541,10 +2541,10 @@ export type HOME_PAGE_QUERY_RESULT =
                     _type: "tabbedContent";
                     title?: string;
                     subtitle?: string;
-                    tabs: Array<{
-                      label: string;
+                    tabs?: Array<{
+                      label?: string;
                       icon?: Icon;
-                      content: Array<
+                      content?: Array<
                         | ({
                             _key: string;
                           } & AlertNotice)
@@ -2594,7 +2594,7 @@ export type HOME_PAGE_QUERY_RESULT =
                             _key: string;
                           } & YoutubeVideo)
                         | {
-                            image: TabImageImage;
+                            image?: TabImageImage;
                             alt?: string;
                             _type: "tabImage";
                             _key: string;
@@ -2614,12 +2614,12 @@ export type HOME_PAGE_QUERY_RESULT =
                         image: {
                           asset: {
                             _id: string;
-                            url: string;
+                            url: string | null;
                             metadata: {
                               lqip: string | null;
                               dimensions: {
-                                width: number;
-                                height: number;
+                                width: number | null;
+                                height: number | null;
                               } | null;
                             } | null;
                           } | null;
@@ -2638,7 +2638,7 @@ export type HOME_PAGE_QUERY_RESULT =
                     _key: string;
                     _type: "testimonialCarousel";
                     title?: string;
-                    testimonials: Array<
+                    testimonials?: Array<
                       {
                         _key: string;
                       } & TestimonialQuote
@@ -2657,12 +2657,12 @@ export type HOME_PAGE_QUERY_RESULT =
                         image: {
                           asset: {
                             _id: string;
-                            url: string;
+                            url: string | null;
                             metadata: {
                               lqip: string | null;
                               dimensions: {
-                                width: number;
-                                height: number;
+                                width: number | null;
+                                height: number | null;
                               } | null;
                             } | null;
                           } | null;
@@ -2680,16 +2680,16 @@ export type HOME_PAGE_QUERY_RESULT =
                 | {
                     _key: string;
                     _type: "testimonialQuote";
-                    quote: string;
+                    quote?: string;
                     avatar: {
                       asset: {
                         _id: string;
-                        url: string;
+                        url: string | null;
                         metadata: {
                           lqip: string | null;
                           dimensions: {
-                            width: number;
-                            height: number;
+                            width: number | null;
+                            height: number | null;
                           } | null;
                         } | null;
                       } | null;
@@ -2697,7 +2697,7 @@ export type HOME_PAGE_QUERY_RESULT =
                       hotspot: SanityImageHotspot | null;
                       crop: SanityImageCrop | null;
                     } | null;
-                    name: string;
+                    name?: string;
                     title?: string;
                     rating?: number;
                     style?: "card" | "large" | "simple";
@@ -2711,12 +2711,12 @@ export type HOME_PAGE_QUERY_RESULT =
                         image: {
                           asset: {
                             _id: string;
-                            url: string;
+                            url: string | null;
                             metadata: {
                               lqip: string | null;
                               dimensions: {
-                                width: number;
-                                height: number;
+                                width: number | null;
+                                height: number | null;
                               } | null;
                             } | null;
                           } | null;
@@ -2745,12 +2745,12 @@ export type HOME_PAGE_QUERY_RESULT =
                         image: {
                           asset: {
                             _id: string;
-                            url: string;
+                            url: string | null;
                             metadata: {
                               lqip: string | null;
                               dimensions: {
-                                width: number;
-                                height: number;
+                                width: number | null;
+                                height: number | null;
                               } | null;
                             } | null;
                           } | null;
@@ -2768,7 +2768,7 @@ export type HOME_PAGE_QUERY_RESULT =
                 | {
                     _key: string;
                     _type: "youtubeVideo";
-                    url: string;
+                    url?: string;
                     caption?: string;
                     blockStyles: null;
                   }
@@ -2784,12 +2784,12 @@ export type HOME_PAGE_QUERY_RESULT =
                   image: {
                     asset: {
                       _id: string;
-                      url: string;
+                      url: string | null;
                       metadata: {
                         lqip: string | null;
                         dimensions: {
-                          width: number;
-                          height: number;
+                          width: number | null;
+                          height: number | null;
                         } | null;
                       } | null;
                     } | null;
@@ -2804,7 +2804,7 @@ export type HOME_PAGE_QUERY_RESULT =
                 effects: Effects | null;
               } | null;
               _type: "gridColumn";
-            }>;
+            }> | null;
             gap?: "lg" | "md" | "none" | "sm" | "xl";
             reverseOnMobile?: boolean;
             paddingY?: "lg" | "md" | "none" | "sm" | "xl";
@@ -2819,12 +2819,12 @@ export type HOME_PAGE_QUERY_RESULT =
                 image: {
                   asset: {
                     _id: string;
-                    url: string;
+                    url: string | null;
                     metadata: {
                       lqip: string | null;
                       dimensions: {
-                        width: number;
-                        height: number;
+                        width: number | null;
+                        height: number | null;
                       } | null;
                     } | null;
                   } | null;
@@ -2845,18 +2845,18 @@ export type HOME_PAGE_QUERY_RESULT =
             layout?: "fullWidth" | "split";
             badge?: string;
             badgeLink?: string;
-            heading: string;
+            heading?: string;
             subtitle?: string;
             alignment?: "center" | "left" | "right";
             buttons: Array<{
               _key: string;
               _type: "callToAction";
-              label: string;
+              label?: string;
               color?: string;
               textColor?: string;
               hoverColor?: string;
               variant?: "ghost" | "outline" | "primary" | "secondary";
-              link: Array<
+              link?: Array<
                 | ({
                     _key: string;
                   } & LinkExternal)
@@ -2872,12 +2872,12 @@ export type HOME_PAGE_QUERY_RESULT =
             mediaImage: {
               asset: {
                 _id: string;
-                url: string;
+                url: string | null;
                 metadata: {
                   lqip: string | null;
                   dimensions: {
-                    width: number;
-                    height: number;
+                    width: number | null;
+                    height: number | null;
                   } | null;
                 } | null;
               } | null;
@@ -2891,19 +2891,16 @@ export type HOME_PAGE_QUERY_RESULT =
             gradientFrom?: string;
             gradientTo?: string;
             gradientDirection?:
-              | "to bottom right"
-              | "to bottom"
-              | "to right"
-              | "to top right";
+              "to bottom right" | "to bottom" | "to right" | "to top right";
             backgroundImage: {
               asset: {
                 _id: string;
-                url: string;
+                url: string | null;
                 metadata: {
                   lqip: string | null;
                   dimensions: {
-                    width: number;
-                    height: number;
+                    width: number | null;
+                    height: number | null;
                   } | null;
                 } | null;
               } | null;
@@ -2926,12 +2923,12 @@ export type HOME_PAGE_QUERY_RESULT =
                 image: {
                   asset: {
                     _id: string;
-                    url: string;
+                    url: string | null;
                     metadata: {
                       lqip: string | null;
                       dimensions: {
-                        width: number;
-                        height: number;
+                        width: number | null;
+                        height: number | null;
                       } | null;
                     } | null;
                   } | null;
@@ -2956,8 +2953,8 @@ export type HOME_PAGE_QUERY_RESULT =
 // Query: *[_type == "page" && slug.current == $slug][0] {    _id, title, slug,      seo {    metaTitle, metaDescription, noIndex,    ogImage { asset->{ _id, url } }  },      pageBuilder[] {    _key, _type, ...,      _type == "heroSection" => {    ...,    buttons[] { _key, _type, ...,   blockStyles {    padding, margin, border, borderRadius,    background { color, image {   asset->{    _id,    url,    metadata { lqip, dimensions { width, height } }  },  alt,  hotspot,  crop }, size, overlay },    typography, effects  } },    mediaImage {   asset->{    _id,    url,    metadata { lqip, dimensions { width, height } }  },  alt,  hotspot,  crop },    backgroundImage {   asset->{    _id,    url,    metadata { lqip, dimensions { width, height } }  },  alt,  hotspot,  crop },      blockStyles {    padding, margin, border, borderRadius,    background { color, image {   asset->{    _id,    url,    metadata { lqip, dimensions { width, height } }  },  alt,  hotspot,  crop }, size, overlay },    typography, effects  }  },    columns[] {      _key, ...,        content[] {    _key, _type, ...,    _type == "imageBlock" => {      image {   asset->{    _id,    url,    metadata { lqip, dimensions { width, height } }  },  alt,  hotspot,  crop },      caption,        blockStyles {    padding, margin, border, borderRadius,    background { color, image {   asset->{    _id,    url,    metadata { lqip, dimensions { width, height } }  },  alt,  hotspot,  crop }, size, overlay },    typography, effects  }    },    _type == "richTextBlock" => {      content[] { ... },        blockStyles {    padding, margin, border, borderRadius,    background { color, image {   asset->{    _id,    url,    metadata { lqip, dimensions { width, height } }  },  alt,  hotspot,  crop }, size, overlay },    typography, effects  }    },    _type == "logoRow" => {      logos[] { image {   asset->{    _id,    url,    metadata { lqip, dimensions { width, height } }  },  alt,  hotspot,  crop }, alt, link },      grayscale, size,        blockStyles {    padding, margin, border, borderRadius,    background { color, image {   asset->{    _id,    url,    metadata { lqip, dimensions { width, height } }  },  alt,  hotspot,  crop }, size, overlay },    typography, effects  }    },    _type == "testimonialQuote" => {      ...,      avatar {   asset->{    _id,    url,    metadata { lqip, dimensions { width, height } }  },  alt,  hotspot,  crop },        blockStyles {    padding, margin, border, borderRadius,    background { color, image {   asset->{    _id,    url,    metadata { lqip, dimensions { width, height } }  },  alt,  hotspot,  crop }, size, overlay },    typography, effects  }    },    _type == "iconText" => {      ...,      icon {   asset->{    _id,    url,    metadata { lqip, dimensions { width, height } }  },  alt,  hotspot,  crop },        blockStyles {    padding, margin, border, borderRadius,    background { color, image {   asset->{    _id,    url,    metadata { lqip, dimensions { width, height } }  },  alt,  hotspot,  crop }, size, overlay },    typography, effects  }    },      blockStyles {    padding, margin, border, borderRadius,    background { color, image {   asset->{    _id,    url,    metadata { lqip, dimensions { width, height } }  },  alt,  hotspot,  crop }, size, overlay },    typography, effects  }  },        blockStyles {    padding, margin, border, borderRadius,    background { color, image {   asset->{    _id,    url,    metadata { lqip, dimensions { width, height } }  },  alt,  hotspot,  crop }, size, overlay },    typography, effects  }    },      blockStyles {    padding, margin, border, borderRadius,    background { color, image {   asset->{    _id,    url,    metadata { lqip, dimensions { width, height } }  },  alt,  hotspot,  crop }, size, overlay },    typography, effects  }  }  }
 export type PAGE_QUERY_RESULT = {
   _id: string;
-  title: string;
-  slug: Slug;
+  title: string | null;
+  slug: Slug | null;
   seo: {
     metaTitle: string | null;
     metaDescription: string | null;
@@ -2965,7 +2962,7 @@ export type PAGE_QUERY_RESULT = {
     ogImage: {
       asset: {
         _id: string;
-        url: string;
+        url: string | null;
       } | null;
     } | null;
   } | null;
@@ -2973,7 +2970,7 @@ export type PAGE_QUERY_RESULT = {
     | {
         _key: string;
         _type: "gridRow";
-        layout: string;
+        layout?: string;
         columns: Array<{
           _key: string;
           content: Array<
@@ -2982,10 +2979,10 @@ export type PAGE_QUERY_RESULT = {
                 _type: "accordion";
                 title?: string;
                 subtitle?: string;
-                panels: Array<{
-                  title: string;
+                panels?: Array<{
+                  title?: string;
                   icon?: AccordionPanelIcon;
-                  content: BlockContent;
+                  content?: BlockContent;
                   _type: "accordionPanel";
                   _key: string;
                 }>;
@@ -3001,12 +2998,12 @@ export type PAGE_QUERY_RESULT = {
                     image: {
                       asset: {
                         _id: string;
-                        url: string;
+                        url: string | null;
                         metadata: {
                           lqip: string | null;
                           dimensions: {
-                            width: number;
-                            height: number;
+                            width: number | null;
+                            height: number | null;
                           } | null;
                         } | null;
                       } | null;
@@ -3024,9 +3021,9 @@ export type PAGE_QUERY_RESULT = {
             | {
                 _key: string;
                 _type: "alertNotice";
-                type: "error" | "info" | "success" | "tip" | "warning";
+                type?: "error" | "info" | "success" | "tip" | "warning";
                 title?: string;
-                message: string;
+                message?: string;
                 dismissible?: boolean;
                 icon?: {
                   asset?: SanityImageAssetReference;
@@ -3045,12 +3042,12 @@ export type PAGE_QUERY_RESULT = {
                     image: {
                       asset: {
                         _id: string;
-                        url: string;
+                        url: string | null;
                         metadata: {
                           lqip: string | null;
                           dimensions: {
-                            width: number;
-                            height: number;
+                            width: number | null;
+                            height: number | null;
                           } | null;
                         } | null;
                       } | null;
@@ -3068,7 +3065,7 @@ export type PAGE_QUERY_RESULT = {
             | {
                 _key: string;
                 _type: "buttonGroup";
-                buttons: Array<
+                buttons?: Array<
                   {
                     _key: string;
                   } & CallToAction
@@ -3086,12 +3083,12 @@ export type PAGE_QUERY_RESULT = {
                     image: {
                       asset: {
                         _id: string;
-                        url: string;
+                        url: string | null;
                         metadata: {
                           lqip: string | null;
                           dimensions: {
-                            width: number;
-                            height: number;
+                            width: number | null;
+                            height: number | null;
                           } | null;
                         } | null;
                       } | null;
@@ -3109,12 +3106,12 @@ export type PAGE_QUERY_RESULT = {
             | {
                 _key: string;
                 _type: "callToAction";
-                label: string;
+                label?: string;
                 color?: string;
                 textColor?: string;
                 hoverColor?: string;
                 variant?: "ghost" | "outline" | "primary" | "secondary";
-                link: Array<
+                link?: Array<
                   | ({
                       _key: string;
                     } & LinkExternal)
@@ -3140,7 +3137,7 @@ export type PAGE_QUERY_RESULT = {
                   | "python"
                   | "typescript";
                 filename?: string;
-                code: string;
+                code?: string;
                 showLineNumbers?: boolean;
                 highlightLines?: string;
                 caption?: string;
@@ -3154,12 +3151,12 @@ export type PAGE_QUERY_RESULT = {
                     image: {
                       asset: {
                         _id: string;
-                        url: string;
+                        url: string | null;
                         metadata: {
                           lqip: string | null;
                           dimensions: {
-                            width: number;
-                            height: number;
+                            width: number | null;
+                            height: number | null;
                           } | null;
                         } | null;
                       } | null;
@@ -3179,7 +3176,7 @@ export type PAGE_QUERY_RESULT = {
                 _type: "countdownTimer";
                 title?: string;
                 subtitle?: string;
-                targetDate: string;
+                targetDate?: string;
                 timezone?:
                   | "America/Chicago"
                   | "America/Denver"
@@ -3204,12 +3201,12 @@ export type PAGE_QUERY_RESULT = {
                     image: {
                       asset: {
                         _id: string;
-                        url: string;
+                        url: string | null;
                         metadata: {
                           lqip: string | null;
                           dimensions: {
-                            width: number;
-                            height: number;
+                            width: number | null;
+                            height: number | null;
                           } | null;
                         } | null;
                       } | null;
@@ -3228,14 +3225,14 @@ export type PAGE_QUERY_RESULT = {
                 _key: string;
                 _type: "dataTable";
                 caption?: string;
-                headers: Array<{
-                  text: string;
+                headers?: Array<{
+                  text?: string;
                   _type: "tableHeader";
                   _key: string;
                 }>;
-                rows: Array<{
-                  cells: Array<{
-                    text: string;
+                rows?: Array<{
+                  cells?: Array<{
+                    text?: string;
                     _type: "tableCell";
                     _key: string;
                   }>;
@@ -3254,12 +3251,12 @@ export type PAGE_QUERY_RESULT = {
                     image: {
                       asset: {
                         _id: string;
-                        url: string;
+                        url: string | null;
                         metadata: {
                           lqip: string | null;
                           dimensions: {
-                            width: number;
-                            height: number;
+                            width: number | null;
+                            height: number | null;
                           } | null;
                         } | null;
                       } | null;
@@ -3277,7 +3274,7 @@ export type PAGE_QUERY_RESULT = {
             | {
                 _key: string;
                 _type: "externalVideo";
-                url: string;
+                url?: string;
                 caption?: string;
                 autoplay?: boolean;
                 loop?: boolean;
@@ -3289,8 +3286,8 @@ export type PAGE_QUERY_RESULT = {
                 _type: "faqBlock";
                 title?: string;
                 subtitle?: string;
-                items: Array<{
-                  question: string;
+                items?: Array<{
+                  question?: string;
                   answer?: BlockContent;
                   _type: "faqItem";
                   _key: string;
@@ -3308,12 +3305,12 @@ export type PAGE_QUERY_RESULT = {
                     image: {
                       asset: {
                         _id: string;
-                        url: string;
+                        url: string | null;
                         metadata: {
                           lqip: string | null;
                           dimensions: {
-                            width: number;
-                            height: number;
+                            width: number | null;
+                            height: number | null;
                           } | null;
                         } | null;
                       } | null;
@@ -3333,9 +3330,9 @@ export type PAGE_QUERY_RESULT = {
                 _type: "featureCardGrid";
                 title?: string;
                 subtitle?: string;
-                cards: Array<{
+                cards?: Array<{
                   icon?: FeatureCardIcon;
-                  title: string;
+                  title?: string;
                   description?: string;
                   cta?: Cta;
                   _type: "featureCard";
@@ -3353,12 +3350,12 @@ export type PAGE_QUERY_RESULT = {
                     image: {
                       asset: {
                         _id: string;
-                        url: string;
+                        url: string | null;
                         metadata: {
                           lqip: string | null;
                           dimensions: {
-                            width: number;
-                            height: number;
+                            width: number | null;
+                            height: number | null;
                           } | null;
                         } | null;
                       } | null;
@@ -3378,10 +3375,10 @@ export type PAGE_QUERY_RESULT = {
                 _type: "formBlock";
                 formTitle?: string;
                 formDescription?: string;
-                fields: Array<{
-                  label: string;
-                  name: string;
-                  type:
+                fields?: Array<{
+                  label?: string;
+                  name?: string;
+                  type?:
                     | "checkbox"
                     | "email"
                     | "number"
@@ -3413,12 +3410,12 @@ export type PAGE_QUERY_RESULT = {
                     image: {
                       asset: {
                         _id: string;
-                        url: string;
+                        url: string | null;
                         metadata: {
                           lqip: string | null;
                           dimensions: {
-                            width: number;
-                            height: number;
+                            width: number | null;
+                            height: number | null;
                           } | null;
                         } | null;
                       } | null;
@@ -3439,12 +3436,12 @@ export type PAGE_QUERY_RESULT = {
                 icon: {
                   asset: {
                     _id: string;
-                    url: string;
+                    url: string | null;
                     metadata: {
                       lqip: string | null;
                       dimensions: {
-                        width: number;
-                        height: number;
+                        width: number | null;
+                        height: number | null;
                       } | null;
                     } | null;
                   } | null;
@@ -3453,7 +3450,7 @@ export type PAGE_QUERY_RESULT = {
                   crop: SanityImageCrop | null;
                 } | null;
                 iconSize?: "large" | "medium" | "small" | "xl";
-                title: string;
+                title?: string;
                 description?: string;
                 alignment?: string;
                 link?: CallToAction;
@@ -3467,12 +3464,12 @@ export type PAGE_QUERY_RESULT = {
                     image: {
                       asset: {
                         _id: string;
-                        url: string;
+                        url: string | null;
                         metadata: {
                           lqip: string | null;
                           dimensions: {
-                            width: number;
-                            height: number;
+                            width: number | null;
+                            height: number | null;
                           } | null;
                         } | null;
                       } | null;
@@ -3493,19 +3490,19 @@ export type PAGE_QUERY_RESULT = {
                 image: {
                   asset: {
                     _id: string;
-                    url: string;
+                    url: string | null;
                     metadata: {
                       lqip: string | null;
                       dimensions: {
-                        width: number;
-                        height: number;
+                        width: number | null;
+                        height: number | null;
                       } | null;
                     } | null;
                   } | null;
                   alt: string | null;
                   hotspot: SanityImageHotspot | null;
                   crop: SanityImageCrop | null;
-                };
+                } | null;
                 caption: string | null;
                 blockStyles: {
                   padding: Padding | null;
@@ -3517,12 +3514,12 @@ export type PAGE_QUERY_RESULT = {
                     image: {
                       asset: {
                         _id: string;
-                        url: string;
+                        url: string | null;
                         metadata: {
                           lqip: string | null;
                           dimensions: {
-                            width: number;
-                            height: number;
+                            width: number | null;
+                            height: number | null;
                           } | null;
                         } | null;
                       } | null;
@@ -3541,8 +3538,8 @@ export type PAGE_QUERY_RESULT = {
                 _key: string;
                 _type: "imageGallery";
                 title?: string;
-                images: Array<{
-                  image: GalleryImageImage;
+                images?: Array<{
+                  image?: GalleryImageImage;
                   alt?: string;
                   caption?: string;
                   _type: "galleryImage";
@@ -3561,12 +3558,12 @@ export type PAGE_QUERY_RESULT = {
                     image: {
                       asset: {
                         _id: string;
-                        url: string;
+                        url: string | null;
                         metadata: {
                           lqip: string | null;
                           dimensions: {
-                            width: number;
-                            height: number;
+                            width: number | null;
+                            height: number | null;
                           } | null;
                         } | null;
                       } | null;
@@ -3588,22 +3585,22 @@ export type PAGE_QUERY_RESULT = {
                   image: {
                     asset: {
                       _id: string;
-                      url: string;
+                      url: string | null;
                       metadata: {
                         lqip: string | null;
                         dimensions: {
-                          width: number;
-                          height: number;
+                          width: number | null;
+                          height: number | null;
                         } | null;
                       } | null;
                     } | null;
                     alt: null;
                     hotspot: SanityImageHotspot | null;
                     crop: SanityImageCrop | null;
-                  };
+                  } | null;
                   alt: string | null;
                   link: string | null;
-                }>;
+                }> | null;
                 grayscale: boolean | null;
                 size: "large" | "medium" | "small" | null;
                 blockStyles: {
@@ -3616,12 +3613,12 @@ export type PAGE_QUERY_RESULT = {
                     image: {
                       asset: {
                         _id: string;
-                        url: string;
+                        url: string | null;
                         metadata: {
                           lqip: string | null;
                           dimensions: {
-                            width: number;
-                            height: number;
+                            width: number | null;
+                            height: number | null;
                           } | null;
                         } | null;
                       } | null;
@@ -3639,7 +3636,7 @@ export type PAGE_QUERY_RESULT = {
             | {
                 _key: string;
                 _type: "lottieAnimation";
-                source: "file" | "url";
+                source?: "file" | "url";
                 url?: string;
                 file?: {
                   asset?: SanityFileAssetReference;
@@ -3661,12 +3658,12 @@ export type PAGE_QUERY_RESULT = {
                     image: {
                       asset: {
                         _id: string;
-                        url: string;
+                        url: string | null;
                         metadata: {
                           lqip: string | null;
                           dimensions: {
-                            width: number;
-                            height: number;
+                            width: number | null;
+                            height: number | null;
                           } | null;
                         } | null;
                       } | null;
@@ -3684,7 +3681,7 @@ export type PAGE_QUERY_RESULT = {
             | {
                 _key: string;
                 _type: "mapEmbed";
-                embedUrl: string;
+                embedUrl?: string;
                 height?: "large" | "medium" | "small" | "xl";
                 caption?: string;
                 style?: "borderless" | "default" | "rounded";
@@ -3698,12 +3695,12 @@ export type PAGE_QUERY_RESULT = {
                     image: {
                       asset: {
                         _id: string;
-                        url: string;
+                        url: string | null;
                         metadata: {
                           lqip: string | null;
                           dimensions: {
-                            width: number;
-                            height: number;
+                            width: number | null;
+                            height: number | null;
                           } | null;
                         } | null;
                       } | null;
@@ -3722,11 +3719,11 @@ export type PAGE_QUERY_RESULT = {
                 _key: string;
                 _type: "pricingCard";
                 badge?: string;
-                title: string;
-                price: string;
+                title?: string;
+                price?: string;
                 priceSubtext?: string;
                 features?: Array<{
-                  text: string;
+                  text?: string;
                   included?: boolean;
                   _type: "pricingFeature";
                   _key: string;
@@ -3743,12 +3740,12 @@ export type PAGE_QUERY_RESULT = {
                     image: {
                       asset: {
                         _id: string;
-                        url: string;
+                        url: string | null;
                         metadata: {
                           lqip: string | null;
                           dimensions: {
-                            width: number;
-                            height: number;
+                            width: number | null;
+                            height: number | null;
                           } | null;
                         } | null;
                       } | null;
@@ -3795,7 +3792,7 @@ export type PAGE_QUERY_RESULT = {
                       _type: "image";
                       _key: string;
                     }
-                >;
+                > | null;
                 blockStyles: {
                   padding: Padding | null;
                   margin: Margin | null;
@@ -3806,12 +3803,12 @@ export type PAGE_QUERY_RESULT = {
                     image: {
                       asset: {
                         _id: string;
-                        url: string;
+                        url: string | null;
                         metadata: {
                           lqip: string | null;
                           dimensions: {
-                            width: number;
-                            height: number;
+                            width: number | null;
+                            height: number | null;
                           } | null;
                         } | null;
                       } | null;
@@ -3829,13 +3826,9 @@ export type PAGE_QUERY_RESULT = {
             | {
                 _key: string;
                 _type: "socialEmbed";
-                platform:
-                  | "facebook"
-                  | "instagram"
-                  | "other"
-                  | "tiktok"
-                  | "twitter";
-                embedUrl: string;
+                platform?:
+                  "facebook" | "instagram" | "other" | "tiktok" | "twitter";
+                embedUrl?: string;
                 caption?: string;
                 aspectRatio?: "auto" | "landscape" | "portrait" | "square";
                 blockStyles: {
@@ -3848,12 +3841,12 @@ export type PAGE_QUERY_RESULT = {
                     image: {
                       asset: {
                         _id: string;
-                        url: string;
+                        url: string | null;
                         metadata: {
                           lqip: string | null;
                           dimensions: {
-                            width: number;
-                            height: number;
+                            width: number | null;
+                            height: number | null;
                           } | null;
                         } | null;
                       } | null;
@@ -3871,7 +3864,7 @@ export type PAGE_QUERY_RESULT = {
             | {
                 _key: string;
                 _type: "spacerDivider";
-                height: "lg" | "md" | "sm" | "xl" | "xs" | "xxl";
+                height?: "lg" | "md" | "sm" | "xl" | "xs" | "xxl";
                 showDivider?: boolean;
                 dividerStyle?: "dashed" | "dotted" | "solid";
                 dividerColor?: string;
@@ -3886,12 +3879,12 @@ export type PAGE_QUERY_RESULT = {
                     image: {
                       asset: {
                         _id: string;
-                        url: string;
+                        url: string | null;
                         metadata: {
                           lqip: string | null;
                           dimensions: {
-                            width: number;
-                            height: number;
+                            width: number | null;
+                            height: number | null;
                           } | null;
                         } | null;
                       } | null;
@@ -3909,8 +3902,8 @@ export type PAGE_QUERY_RESULT = {
             | {
                 _key: string;
                 _type: "statMetric";
-                value: string;
-                label: string;
+                value?: string;
+                label?: string;
                 prefix?: string;
                 suffix?: string;
                 size?: "large" | "medium" | "small";
@@ -3924,12 +3917,12 @@ export type PAGE_QUERY_RESULT = {
                     image: {
                       asset: {
                         _id: string;
-                        url: string;
+                        url: string | null;
                         metadata: {
                           lqip: string | null;
                           dimensions: {
-                            width: number;
-                            height: number;
+                            width: number | null;
+                            height: number | null;
                           } | null;
                         } | null;
                       } | null;
@@ -3949,10 +3942,10 @@ export type PAGE_QUERY_RESULT = {
                 _type: "tabbedContent";
                 title?: string;
                 subtitle?: string;
-                tabs: Array<{
-                  label: string;
+                tabs?: Array<{
+                  label?: string;
                   icon?: Icon;
-                  content: Array<
+                  content?: Array<
                     | ({
                         _key: string;
                       } & AlertNotice)
@@ -4002,7 +3995,7 @@ export type PAGE_QUERY_RESULT = {
                         _key: string;
                       } & YoutubeVideo)
                     | {
-                        image: TabImageImage;
+                        image?: TabImageImage;
                         alt?: string;
                         _type: "tabImage";
                         _key: string;
@@ -4022,12 +4015,12 @@ export type PAGE_QUERY_RESULT = {
                     image: {
                       asset: {
                         _id: string;
-                        url: string;
+                        url: string | null;
                         metadata: {
                           lqip: string | null;
                           dimensions: {
-                            width: number;
-                            height: number;
+                            width: number | null;
+                            height: number | null;
                           } | null;
                         } | null;
                       } | null;
@@ -4046,7 +4039,7 @@ export type PAGE_QUERY_RESULT = {
                 _key: string;
                 _type: "testimonialCarousel";
                 title?: string;
-                testimonials: Array<
+                testimonials?: Array<
                   {
                     _key: string;
                   } & TestimonialQuote
@@ -4065,12 +4058,12 @@ export type PAGE_QUERY_RESULT = {
                     image: {
                       asset: {
                         _id: string;
-                        url: string;
+                        url: string | null;
                         metadata: {
                           lqip: string | null;
                           dimensions: {
-                            width: number;
-                            height: number;
+                            width: number | null;
+                            height: number | null;
                           } | null;
                         } | null;
                       } | null;
@@ -4088,16 +4081,16 @@ export type PAGE_QUERY_RESULT = {
             | {
                 _key: string;
                 _type: "testimonialQuote";
-                quote: string;
+                quote?: string;
                 avatar: {
                   asset: {
                     _id: string;
-                    url: string;
+                    url: string | null;
                     metadata: {
                       lqip: string | null;
                       dimensions: {
-                        width: number;
-                        height: number;
+                        width: number | null;
+                        height: number | null;
                       } | null;
                     } | null;
                   } | null;
@@ -4105,7 +4098,7 @@ export type PAGE_QUERY_RESULT = {
                   hotspot: SanityImageHotspot | null;
                   crop: SanityImageCrop | null;
                 } | null;
-                name: string;
+                name?: string;
                 title?: string;
                 rating?: number;
                 style?: "card" | "large" | "simple";
@@ -4119,12 +4112,12 @@ export type PAGE_QUERY_RESULT = {
                     image: {
                       asset: {
                         _id: string;
-                        url: string;
+                        url: string | null;
                         metadata: {
                           lqip: string | null;
                           dimensions: {
-                            width: number;
-                            height: number;
+                            width: number | null;
+                            height: number | null;
                           } | null;
                         } | null;
                       } | null;
@@ -4153,12 +4146,12 @@ export type PAGE_QUERY_RESULT = {
                     image: {
                       asset: {
                         _id: string;
-                        url: string;
+                        url: string | null;
                         metadata: {
                           lqip: string | null;
                           dimensions: {
-                            width: number;
-                            height: number;
+                            width: number | null;
+                            height: number | null;
                           } | null;
                         } | null;
                       } | null;
@@ -4176,7 +4169,7 @@ export type PAGE_QUERY_RESULT = {
             | {
                 _key: string;
                 _type: "youtubeVideo";
-                url: string;
+                url?: string;
                 caption?: string;
                 blockStyles: null;
               }
@@ -4192,12 +4185,12 @@ export type PAGE_QUERY_RESULT = {
               image: {
                 asset: {
                   _id: string;
-                  url: string;
+                  url: string | null;
                   metadata: {
                     lqip: string | null;
                     dimensions: {
-                      width: number;
-                      height: number;
+                      width: number | null;
+                      height: number | null;
                     } | null;
                   } | null;
                 } | null;
@@ -4212,7 +4205,7 @@ export type PAGE_QUERY_RESULT = {
             effects: Effects | null;
           } | null;
           _type: "gridColumn";
-        }>;
+        }> | null;
         gap?: "lg" | "md" | "none" | "sm" | "xl";
         reverseOnMobile?: boolean;
         paddingY?: "lg" | "md" | "none" | "sm" | "xl";
@@ -4227,12 +4220,12 @@ export type PAGE_QUERY_RESULT = {
             image: {
               asset: {
                 _id: string;
-                url: string;
+                url: string | null;
                 metadata: {
                   lqip: string | null;
                   dimensions: {
-                    width: number;
-                    height: number;
+                    width: number | null;
+                    height: number | null;
                   } | null;
                 } | null;
               } | null;
@@ -4253,18 +4246,18 @@ export type PAGE_QUERY_RESULT = {
         layout?: "fullWidth" | "split";
         badge?: string;
         badgeLink?: string;
-        heading: string;
+        heading?: string;
         subtitle?: string;
         alignment?: "center" | "left" | "right";
         buttons: Array<{
           _key: string;
           _type: "callToAction";
-          label: string;
+          label?: string;
           color?: string;
           textColor?: string;
           hoverColor?: string;
           variant?: "ghost" | "outline" | "primary" | "secondary";
-          link: Array<
+          link?: Array<
             | ({
                 _key: string;
               } & LinkExternal)
@@ -4280,12 +4273,12 @@ export type PAGE_QUERY_RESULT = {
         mediaImage: {
           asset: {
             _id: string;
-            url: string;
+            url: string | null;
             metadata: {
               lqip: string | null;
               dimensions: {
-                width: number;
-                height: number;
+                width: number | null;
+                height: number | null;
               } | null;
             } | null;
           } | null;
@@ -4299,19 +4292,16 @@ export type PAGE_QUERY_RESULT = {
         gradientFrom?: string;
         gradientTo?: string;
         gradientDirection?:
-          | "to bottom right"
-          | "to bottom"
-          | "to right"
-          | "to top right";
+          "to bottom right" | "to bottom" | "to right" | "to top right";
         backgroundImage: {
           asset: {
             _id: string;
-            url: string;
+            url: string | null;
             metadata: {
               lqip: string | null;
               dimensions: {
-                width: number;
-                height: number;
+                width: number | null;
+                height: number | null;
               } | null;
             } | null;
           } | null;
@@ -4334,12 +4324,12 @@ export type PAGE_QUERY_RESULT = {
             image: {
               asset: {
                 _id: string;
-                url: string;
+                url: string | null;
                 metadata: {
                   lqip: string | null;
                   dimensions: {
-                    width: number;
-                    height: number;
+                    width: number | null;
+                    height: number | null;
                   } | null;
                 } | null;
               } | null;
@@ -4362,7 +4352,7 @@ export type PAGE_QUERY_RESULT = {
 // Variable: PAGE_SLUGS_QUERY
 // Query: *[_type == "page" && defined(slug.current)] {    "slug": slug.current  }
 export type PAGE_SLUGS_QUERY_RESULT = Array<{
-  slug: string;
+  slug: string | null;
 }>;
 
 // Source: ../frontend/src/sanity/lib/queries.ts
@@ -4370,20 +4360,20 @@ export type PAGE_SLUGS_QUERY_RESULT = Array<{
 // Query: *[_type == "blogPost"] | order(publishedAt desc) {    _id, title, slug, excerpt, publishedAt, author,    coverImage {   asset->{    _id,    url,    metadata { lqip, dimensions { width, height } }  },  alt,  hotspot,  crop },      seo {    metaTitle, metaDescription, noIndex,    ogImage { asset->{ _id, url } }  }  }
 export type BLOG_POSTS_QUERY_RESULT = Array<{
   _id: string;
-  title: string;
-  slug: Slug;
+  title: string | null;
+  slug: Slug | null;
   excerpt: string | null;
-  publishedAt: string;
+  publishedAt: string | null;
   author: string | null;
   coverImage: {
     asset: {
       _id: string;
-      url: string;
+      url: string | null;
       metadata: {
         lqip: string | null;
         dimensions: {
-          width: number;
-          height: number;
+          width: number | null;
+          height: number | null;
         } | null;
       } | null;
     } | null;
@@ -4398,7 +4388,7 @@ export type BLOG_POSTS_QUERY_RESULT = Array<{
     ogImage: {
       asset: {
         _id: string;
-        url: string;
+        url: string | null;
       } | null;
     } | null;
   } | null;
@@ -4409,20 +4399,20 @@ export type BLOG_POSTS_QUERY_RESULT = Array<{
 // Query: *[_type == "blogPost" && slug.current == $slug][0] {    _id, title, slug, excerpt, publishedAt, author,    coverImage {   asset->{    _id,    url,    metadata { lqip, dimensions { width, height } }  },  alt,  hotspot,  crop },    body[] { ... },      seo {    metaTitle, metaDescription, noIndex,    ogImage { asset->{ _id, url } }  }  }
 export type BLOG_POST_QUERY_RESULT = {
   _id: string;
-  title: string;
-  slug: Slug;
+  title: string | null;
+  slug: Slug | null;
   excerpt: string | null;
-  publishedAt: string;
+  publishedAt: string | null;
   author: string | null;
   coverImage: {
     asset: {
       _id: string;
-      url: string;
+      url: string | null;
       metadata: {
         lqip: string | null;
         dimensions: {
-          width: number;
-          height: number;
+          width: number | null;
+          height: number | null;
         } | null;
       } | null;
     } | null;
@@ -4467,7 +4457,7 @@ export type BLOG_POST_QUERY_RESULT = {
     ogImage: {
       asset: {
         _id: string;
-        url: string;
+        url: string | null;
       } | null;
     } | null;
   } | null;
@@ -4477,7 +4467,7 @@ export type BLOG_POST_QUERY_RESULT = {
 // Variable: BLOG_SLUGS_QUERY
 // Query: *[_type == "blogPost" && defined(slug.current)] {    "slug": slug.current  }
 export type BLOG_SLUGS_QUERY_RESULT = Array<{
-  slug: string;
+  slug: string | null;
 }>;
 
 // Source: ../frontend/src/sanity/lib/queries.ts
@@ -4497,17 +4487,17 @@ export type SITE_SETTINGS_QUERY_RESULT =
       footerColumns: null;
     }
   | {
-      siteName: string;
+      siteName: string | null;
       tagline: string | null;
       logo: {
         asset: {
           _id: string;
-          url: string;
+          url: string | null;
           metadata: {
             lqip: string | null;
             dimensions: {
-              width: number;
-              height: number;
+              width: number | null;
+              height: number | null;
             } | null;
           } | null;
         } | null;
@@ -4526,30 +4516,31 @@ export type SITE_SETTINGS_QUERY_RESULT =
           | "linkedin"
           | "tiktok"
           | "twitter"
-          | "youtube";
-        url: string;
+          | "youtube"
+          | null;
+        url: string | null;
       }> | null;
       mainNav: Array<
         | {
             _key: string;
             _type: "navDropdown";
-            label: string;
+            label: string | null;
             href: null;
             isButton: null;
             items: Array<{
               _key: string;
-              label: string;
-              href: string;
+              label: string | null;
+              href: string | null;
               description: string | null;
               icon: {
                 asset: {
                   _id: string;
-                  url: string;
+                  url: string | null;
                   metadata: {
                     lqip: string | null;
                     dimensions: {
-                      width: number;
-                      height: number;
+                      width: number | null;
+                      height: number | null;
                     } | null;
                   } | null;
                 } | null;
@@ -4557,13 +4548,13 @@ export type SITE_SETTINGS_QUERY_RESULT =
                 hotspot: SanityImageHotspot | null;
                 crop: SanityImageCrop | null;
               } | null;
-            }>;
+            }> | null;
           }
         | {
             _key: string;
             _type: "navLink";
-            label: string;
-            href: string;
+            label: string | null;
+            href: string | null;
             isButton: boolean | null;
           }
       > | null;
@@ -4571,11 +4562,11 @@ export type SITE_SETTINGS_QUERY_RESULT =
       footerDescription: string | null;
       footerColumns: Array<{
         _key: string;
-        title: string;
+        title: string | null;
         links: Array<{
           _key: string;
-          label: string;
-          href: string;
+          label: string | null;
+          href: string | null;
         }> | null;
       }> | null;
     }
